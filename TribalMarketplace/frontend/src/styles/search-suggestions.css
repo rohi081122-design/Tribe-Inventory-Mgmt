@@ -1,0 +1,267 @@
+/* Live search suggestions under the search box (components/SearchSuggestions.jsx) */
+
+/* The box around the search bar: the list is positioned below it */
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-suggest {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 300; /* above the page, the category menu and the product photos */
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  text-align: left;
+  box-shadow: 0 18px 40px rgba(31, 20, 12, 0.22);
+  animation: suggest-open 0.14s ease-out;
+}
+
+.search-suggest-list {
+  /* SearchBar.jsx sets --suggest-max-height to the free space below the search box */
+  max-height: var(--suggest-max-height, min(460px, 65vh));
+  margin: 0;
+  padding: 6px 0 0;
+  overflow-y: auto;
+  overscroll-behavior: contain; /* scrolling the list does not scroll the page */
+  list-style: none;
+  transition: opacity var(--transition);
+}
+
+/* Newer suggestions are loading: the old ones fade a little */
+.search-suggest-list.is-updating {
+  opacity: 0.7;
+}
+
+/* ---------- One product ---------- */
+.search-suggest-item {
+  cursor: pointer;
+}
+
+.search-suggest-link {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  color: inherit;
+}
+
+.search-suggest-link:hover {
+  color: inherit;
+}
+
+.search-suggest-item:hover .search-suggest-link,
+.search-suggest-item.is-active .search-suggest-link {
+  background: var(--cream);
+  box-shadow: inset 3px 0 0 var(--terracotta-500);
+}
+
+.search-suggest-thumb {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--beige);
+  object-fit: cover;
+}
+
+.search-suggest-thumb.image-placeholder {
+  font-size: 0.55rem;
+}
+
+.search-suggest-thumb.image-placeholder svg {
+  width: 18px;
+  height: 18px;
+}
+
+.search-suggest-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.search-suggest-name,
+.search-suggest-category {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-suggest-name {
+  font-size: 0.93rem;
+  color: var(--brown-900);
+}
+
+/* The typed letters inside the product name */
+.search-suggest-match {
+  padding: 0;
+  background: none;
+  color: var(--terracotta-700);
+  font-weight: 700;
+}
+
+.search-suggest-category {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.search-suggest-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--terracotta-700);
+  white-space: nowrap;
+}
+
+.search-suggest-price small {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--error);
+}
+
+/* ---------- "See all results" row ---------- */
+/* It stays at the bottom of the list (sticky), so it is visible even when the list scrolls */
+.search-suggest-all {
+  position: sticky;
+  bottom: 0;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--forest-700);
+  cursor: pointer;
+}
+
+.search-suggest-all strong {
+  color: var(--brown-900);
+}
+
+.search-suggest-all:hover,
+.search-suggest-all.is-active {
+  background: var(--forest-50);
+  box-shadow: inset 3px 0 0 var(--forest-700);
+}
+
+/* ---------- Loading, no results, error ---------- */
+.search-suggest-status,
+.search-suggest-empty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.search-suggest-empty {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.search-suggest-empty strong {
+  color: var(--brown-900);
+  overflow-wrap: anywhere;
+}
+
+.search-suggest-error {
+  color: var(--error);
+}
+
+.search-suggest-spinner {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--terracotta-500);
+  border-radius: 50%;
+  animation: suggest-spin 0.7s linear infinite;
+}
+
+.search-suggest-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 3px;
+  background: var(--terracotta-500);
+  animation: suggest-progress 1s ease-in-out infinite;
+}
+
+@keyframes suggest-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes suggest-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes suggest-progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-suggest,
+  .search-suggest-progress {
+    animation: none;
+  }
+
+  .search-suggest-spinner {
+    animation-duration: 2s;
+  }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 560px) {
+  .search-suggest {
+    top: calc(100% + 6px);
+  }
+
+  .search-suggest-link {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .search-suggest-thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-suggest-name,
+  .search-suggest-price {
+    font-size: 0.86rem;
+  }
+}
+
+/* No room for the "Photo" word in the small placeholder */
+.search-suggest-thumb.image-placeholder span {
+  display: none;
+}

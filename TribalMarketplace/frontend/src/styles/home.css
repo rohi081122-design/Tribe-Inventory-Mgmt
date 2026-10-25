@@ -1,0 +1,438 @@
+/* =====================================================================
+   home.css - homepage sections
+   ===================================================================== */
+
+/* ---------- Search card (overlaps the bottom of the carousel) ---------- */
+.home-search {
+  position: relative;
+  z-index: 3;
+  margin-top: -40px;
+  padding-bottom: 12px;
+}
+
+.home-search-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 14px 32px;
+  padding: 28px 32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.home-search-text h2 {
+  font-size: 1.45rem;
+  margin: 0 0 4px;
+}
+
+.home-search-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.quick-searches {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.quick-searches .chip {
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+}
+
+/* ---------- Highlights row ---------- */
+.home-highlights {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.home-highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border);
+}
+
+.home-highlight-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--forest-100);
+  color: var(--forest-700);
+}
+
+.home-highlight:nth-child(even) .home-highlight-icon {
+  background: var(--terracotta-100);
+  color: var(--terracotta-700);
+}
+
+.home-highlight strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--brown-900);
+}
+
+.home-highlight small {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* ---------- Handicrafts section ---------- */
+.handicrafts-section {
+  color: var(--text-light);
+  background-color: var(--forest-800);
+  background-image:
+    radial-gradient(circle at 8% 90%, rgba(217, 164, 65, 0.2) 0, transparent 35%),
+    radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.6px);
+  background-size: 100% 100%, 22px 22px;
+}
+
+.handicrafts-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.handicrafts-intro h2 {
+  color: var(--white);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.handicrafts-intro p {
+  color: rgba(253, 248, 241, 0.85);
+}
+
+.handicrafts-intro .chip-list {
+  margin: 20px 0 26px;
+}
+
+.handicrafts-section .empty-state {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Forest & eco-friendly panels ---------- */
+.natural-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.natural-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--forest-700);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.natural-panel-ochre {
+  border-top-color: var(--ochre);
+}
+
+.natural-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.natural-panel-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin: 0 0 2px;
+}
+
+.natural-panel-header p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.natural-panel-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--forest-100);
+  font-size: 1.9rem;
+}
+
+.natural-panel-ochre .natural-panel-icon {
+  background: var(--ochre-light);
+}
+
+.natural-panel .products-grid-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.natural-panel .empty-state {
+  padding: 28px 16px;
+}
+
+.natural-panel > .section-link {
+  margin-top: auto;
+}
+
+/* ---------- Seller promotion ---------- */
+.seller-promo {
+  color: var(--white);
+  background-color: var(--terracotta-600);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0 14px, transparent 14px 28px),
+    linear-gradient(120deg, var(--terracotta-700), var(--terracotta-500));
+  padding: 56px 0;
+  position: relative;
+}
+
+/* With a photo of an artisan behind a terracotta overlay (photo set in data/pageHeaderPhotos.js) */
+.seller-promo-photo {
+  background-image:
+    linear-gradient(120deg, rgba(154, 63, 36, 0.94), rgba(180, 77, 46, 0.74)),
+    var(--header-photo);
+  background-size: cover;
+  background-position: var(--header-photo-position, center);
+}
+
+.seller-promo::before,
+.seller-promo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image:
+    linear-gradient(45deg, transparent 75%, var(--brown-700) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--brown-700) 75%);
+  background-size: 20px 20px;
+}
+
+.seller-promo::before {
+  top: 0;
+}
+
+.seller-promo::after {
+  bottom: 0;
+  background-position: 0 0;
+  transform: scaleY(-1);
+}
+
+.seller-promo-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.seller-promo-text {
+  max-width: 660px;
+}
+
+.seller-promo .eyebrow {
+  color: var(--ochre-light);
+}
+
+.seller-promo h2 {
+  color: var(--white);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+}
+
+.seller-promo p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.seller-steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.seller-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seller-steps strong {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--terracotta-700);
+  font-size: 0.9rem;
+}
+
+.seller-promo-action {
+  flex-shrink: 0;
+}
+
+/* ---------- About the marketplace ---------- */
+.home-about-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.home-about-inner p {
+  color: var(--text-muted);
+}
+
+.home-about-points {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.home-about-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.home-about-points li > span {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--beige);
+  font-size: 1.4rem;
+}
+
+.home-about-points strong {
+  color: var(--brown-900);
+}
+
+.home-about-points p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .home-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .handicrafts-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .handicrafts-products .products-grid-compact {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .home-search-card {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .natural-grid,
+  .home-about-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-promo-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .handicrafts-products .products-grid-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .home-search {
+    margin-top: -32px;
+  }
+
+  .home-search-card {
+    padding: 18px 16px;
+  }
+
+  .home-search-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .search-bar-large input {
+    height: 50px;
+    padding: 0 16px;
+    font-size: 0.95rem;
+  }
+
+  .search-bar-large button {
+    padding: 0 16px;
+  }
+
+  .search-bar-button-text {
+    display: none;
+  }
+
+  .home-highlights {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .natural-panel {
+    padding: 18px 14px;
+  }
+
+  .natural-panel .products-grid-compact,
+  .handicrafts-products .products-grid-compact {
+    gap: 10px;
+  }
+
+  .seller-promo {
+    padding: 44px 0;
+  }
+
+  .seller-promo-action,
+  .seller-promo-action .btn {
+    width: 100%;
+  }
+}

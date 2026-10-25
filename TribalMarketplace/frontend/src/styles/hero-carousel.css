@@ -1,0 +1,425 @@
+/* =====================================================================
+   hero-carousel.css - homepage banner slider
+   ===================================================================== */
+
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  background: var(--forest-900);
+  isolation: isolate;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  /* allow vertical page scrolling, we handle horizontal swipes ourselves */
+  touch-action: pan-y;
+}
+
+/* All slides sit side by side; moving the track shows one slide at a time */
+.carousel-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 100%;
+  /* fixed height = no layout jump when images load */
+  height: clamp(420px, 44vw, 560px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--white);
+}
+
+/* ---------- Fallback backgrounds (used when no image URL is set) ---------- */
+.theme-forest {
+  background: linear-gradient(115deg, #10261a 0%, #1f3d29 45%, #3f7150 100%);
+}
+
+.theme-terracotta {
+  background: linear-gradient(115deg, #521f11 0%, #943b21 45%, #cf7148 100%);
+}
+
+.theme-brown {
+  background: linear-gradient(115deg, #1f1208 0%, #4a2c18 45%, #8f5f3a 100%);
+}
+
+.theme-ochre {
+  background: linear-gradient(115deg, #33230a 0%, #6f4c15 45%, #c28c30 100%);
+}
+
+/* Banner image */
+.slide-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Decorative tribal-style art (dots, sun rings and a zig-zag band) */
+.slide-art {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+.slide-art-sun,
+.slide-art-ring {
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.slide-art-sun {
+  right: 22%;
+  width: clamp(260px, 34vw, 480px);
+  aspect-ratio: 1;
+  background: repeating-radial-gradient(circle, rgba(246, 231, 197, 0.2) 0 2px, transparent 3px 20px);
+}
+
+.slide-art-ring {
+  right: 22%;
+  width: clamp(150px, 19vw, 270px);
+  aspect-ratio: 1;
+  border: 3px dashed rgba(246, 231, 197, 0.5);
+  background: conic-gradient(
+    rgba(217, 164, 65, 0.55) 0 6.25%,
+    transparent 0 12.5%,
+    rgba(217, 164, 65, 0.55) 0 18.75%,
+    transparent 0 25%,
+    rgba(217, 164, 65, 0.55) 0 31.25%,
+    transparent 0 37.5%,
+    rgba(217, 164, 65, 0.55) 0 43.75%,
+    transparent 0 50%,
+    rgba(217, 164, 65, 0.55) 0 56.25%,
+    transparent 0 62.5%,
+    rgba(217, 164, 65, 0.55) 0 68.75%,
+    transparent 0 75%,
+    rgba(217, 164, 65, 0.55) 0 81.25%,
+    transparent 0 87.5%,
+    rgba(217, 164, 65, 0.55) 0 93.75%,
+    transparent 0
+  );
+  animation: slow-spin 60s linear infinite;
+}
+
+/* small solid circle in the middle of the ring */
+.slide-art-ring::after {
+  content: '';
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: rgba(246, 231, 197, 0.85);
+  box-shadow: 0 0 0 8px rgba(246, 231, 197, 0.18);
+}
+
+.slide-art-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14px;
+  background-image:
+    linear-gradient(45deg, transparent 75%, rgba(246, 231, 197, 0.35) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(246, 231, 197, 0.35) 75%);
+  background-size: 28px 28px;
+  background-position: 0 0;
+  transform: scaleY(-1);
+}
+
+@keyframes slow-spin {
+  to {
+    transform: translate(50%, -50%) rotate(360deg);
+  }
+}
+
+/* ---------- Dark gradient that keeps the text readable ---------- */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 13, 7, 0.82) 0%, rgba(20, 13, 7, 0.55) 45%, rgba(20, 13, 7, 0.08) 100%);
+}
+
+.carousel-slide:not(.has-image) .slide-overlay {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+/* Small photographer credit in the top-right corner of a photo banner */
+.slide-credit {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  max-width: calc(100% - 24px);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-credit:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ---------- Text ---------- */
+.slide-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 24px;
+  padding-bottom: 96px;
+}
+
+.slide-content > * {
+  max-width: 600px;
+}
+
+.slide-eyebrow {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.slide-title {
+  color: var(--white);
+  font-size: clamp(1.9rem, 4.6vw, 3.5rem);
+  line-height: 1.12;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+}
+
+.slide-description {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 26px;
+}
+
+/* Text slides in gently on the active slide */
+.carousel-slide[aria-hidden='false'] .slide-content > * {
+  animation: slide-text-in 0.7s ease both;
+}
+
+.carousel-slide[aria-hidden='false'] .slide-title {
+  animation-delay: 0.1s;
+}
+
+.carousel-slide[aria-hidden='false'] .slide-description {
+  animation-delay: 0.2s;
+}
+
+.carousel-slide[aria-hidden='false'] .btn {
+  animation-delay: 0.3s;
+}
+
+@keyframes slide-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Arrows ---------- */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--white);
+  transform: translateY(-50%);
+  opacity: 0.85;
+  transition:
+    background-color var(--transition),
+    opacity var(--transition);
+}
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.carousel-arrow-prev {
+  left: 18px;
+}
+
+.carousel-arrow-next {
+  right: 18px;
+}
+
+/* ---------- Dots and pause button ---------- */
+.carousel-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 56px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 6px 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+}
+
+/* The button is 24px (easy to tap); the visible dot is drawn with ::before */
+.carousel-dot {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease;
+}
+
+.carousel-dot::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.55);
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.carousel-dot:hover::before {
+  background: var(--white);
+}
+
+.carousel-dot.is-active {
+  width: 38px;
+}
+
+.carousel-dot.is-active::before {
+  width: 28px;
+  background: var(--ochre);
+}
+
+.carousel-pause {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+}
+
+.carousel-pause:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .slide-art-sun,
+  .slide-art-ring {
+    right: 8%;
+    opacity: 0.45;
+  }
+
+  .carousel-slide:not(.has-image) .slide-overlay {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel-slide {
+    height: 460px;
+    align-items: flex-start;
+  }
+
+  .slide-content {
+    padding-top: 40px;
+  }
+
+  .slide-overlay {
+    background: linear-gradient(180deg, rgba(20, 13, 7, 0.75) 0%, rgba(20, 13, 7, 0.55) 60%, rgba(20, 13, 7, 0.65) 100%);
+  }
+
+  .slide-art-sun,
+  .slide-art-ring {
+    top: auto;
+    bottom: -40px;
+    right: 50%;
+    transform: translate(50%, 0);
+    opacity: 0.35;
+  }
+
+  .slide-art-ring {
+    animation: none;
+  }
+
+  /* Arrows move to the bottom corners so they never cover the text */
+  .carousel-arrow {
+    top: auto;
+    bottom: 52px;
+    width: 40px;
+    height: 40px;
+    transform: none;
+  }
+
+  .carousel-arrow-prev {
+    left: 12px;
+  }
+
+  .carousel-arrow-next {
+    right: 12px;
+  }
+
+  .carousel-controls {
+    bottom: 56px;
+  }
+}
+
+/* No sliding animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none;
+  }
+
+  .slide-art-ring {
+    animation: none;
+  }
+
+  .carousel-slide[aria-hidden='false'] .slide-content > * {
+    animation: none;
+  }
+}

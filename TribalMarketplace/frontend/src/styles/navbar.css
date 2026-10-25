@@ -1,0 +1,587 @@
+/* =====================================================================
+   navbar.css - sticky header, logo, search bar and mobile menu
+   ===================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(31, 20, 12, 0.12);
+}
+
+/* ---------- Top row ---------- */
+.navbar-top {
+  background-color: var(--forest-800);
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 10px, transparent 10px 20px);
+  color: var(--white);
+}
+
+.navbar-top-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 72px;
+}
+
+.navbar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.navbar-toggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------- Brand / logo ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.brand:hover {
+  color: var(--white);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-tagline {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  white-space: nowrap;
+}
+
+.logo-image {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* CSS-only logo: a patterned ring (like a painted sun) with a letter in the middle */
+.logo-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: conic-gradient(
+    var(--terracotta-500) 0 12.5%,
+    var(--ochre) 0 25%,
+    var(--terracotta-500) 0 37.5%,
+    var(--ochre) 0 50%,
+    var(--terracotta-500) 0 62.5%,
+    var(--ochre) 0 75%,
+    var(--terracotta-500) 0 87.5%,
+    var(--ochre) 0
+  );
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--forest-800);
+  border: 2px dashed rgba(246, 231, 197, 0.55);
+}
+
+.logo-mark-letter {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ochre-light);
+}
+
+/* ---------- Search bar (also used on the homepage) ---------- */
+.navbar-search {
+  flex: 1;
+  max-width: 640px;
+  min-width: 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.search-bar:focus-within {
+  border-color: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.25);
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.search-bar input::placeholder {
+  color: #9a8b7c;
+}
+
+/* Hide the browser's own "clear" cross in search inputs */
+.search-bar input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.search-bar button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  border: none;
+  background: var(--terracotta-600);
+  color: var(--white);
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.search-bar button:hover {
+  background: var(--terracotta-700);
+}
+
+/* Mic button (voice search): a round icon between the text box and the Search button */
+.search-bar .search-mic-button {
+  flex-shrink: 0;
+  align-self: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.search-bar .search-mic-button:hover {
+  background: var(--cream);
+  color: var(--terracotta-600);
+}
+
+.search-bar .search-mic-button:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: -2px;
+}
+
+.search-bar-large .search-mic-button {
+  width: 44px;
+  height: 44px;
+}
+
+.search-bar-large {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-bar-large input {
+  height: 56px;
+  padding: 0 22px;
+  font-size: 1.02rem;
+}
+
+.search-bar-large button {
+  padding: 0 26px;
+}
+
+/* ---------- Account + cart ---------- */
+.navbar-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.navbar-greeting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: 190px;
+}
+
+.navbar-greeting > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-greeting small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+a.navbar-greeting:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.navbar-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.navbar-cart:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.navbar-cart-count {
+  position: absolute;
+  top: 1px;
+  left: 26px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--ochre);
+  color: var(--brown-900);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Bottom row (main links) ---------- */
+.navbar-menu {
+  background: var(--cream);
+  border-top: 3px solid var(--terracotta-600);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-menu-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--brown-700);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--terracotta-600);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.active {
+  color: var(--terracotta-600);
+}
+
+.nav-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link-seller {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--forest-100);
+  color: var(--forest-700);
+}
+
+.nav-link-seller::after {
+  display: none;
+}
+
+.nav-link-seller:hover,
+.nav-link-seller.active {
+  background: var(--forest-700);
+  color: var(--white);
+}
+
+.navbar-backdrop {
+  display: none;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .navbar-greeting {
+    display: none;
+  }
+}
+
+/* ---------- Mobile: hamburger menu ---------- */
+@media (max-width: 900px) {
+  .navbar-top-inner {
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    min-height: 0;
+    padding-top: 10px;
+    padding-bottom: 12px;
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
+  }
+
+  .brand {
+    flex: 1;
+  }
+
+  .navbar-search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .search-bar input {
+    height: 42px;
+  }
+
+  .navbar-cart-label {
+    display: none;
+  }
+
+  /* The menu becomes a panel that drops down below the header */
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    border-top-width: 3px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar-menu.is-open {
+    display: block;
+    animation: menu-drop 0.2s ease-out;
+  }
+
+  .navbar-menu-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 6px;
+    padding-bottom: 16px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    width: 100%;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-account {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .nav-account .nav-link {
+    justify-content: center;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-account .nav-link-seller {
+    border-color: transparent;
+  }
+
+  .nav-account .btn {
+    width: 100%;
+  }
+
+  .navbar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(31, 20, 12, 0.45);
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Likes + cart icons close together, so the shop name keeps its room */
+  .navbar-quick-actions {
+    gap: 0;
+  }
+
+  .navbar-cart {
+    padding: 8px 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-top-inner {
+    gap: 10px 8px;
+  }
+
+  .navbar-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .brand-tagline {
+    display: none;
+  }
+
+  /* Very small phones: a smaller logo and name, so they fit next to the likes and cart icons */
+  .navbar-top-inner {
+    gap: 10px 4px;
+  }
+
+  .brand-name {
+    font-size: 0.86rem;
+  }
+
+  .brand .logo-mark,
+  .brand .logo-image {
+    width: 34px !important; /* the size is set inline by Logo.jsx */
+    height: 34px !important;
+  }
+
+  .brand .logo-mark-letter {
+    font-size: 1.05rem;
+  }
+
+  .navbar-cart {
+    padding: 8px 3px;
+  }
+}
+
+@keyframes menu-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Likes link (heart next to the cart) ---------- */
+.navbar-likes .navbar-likes-count {
+  background: #d92d3a;
+  color: var(--white);
+}

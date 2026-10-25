@@ -1,0 +1,327 @@
+/* =====================================================================
+   orders.css - seller orders page and the team's orders view
+   ===================================================================== */
+
+.tab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.chip-count {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.chip.is-active .chip-count {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Status pill ---------- */
+.order-status {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.order-status-placed {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.order-status-confirmed,
+.order-status-shipped {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.order-status-delivered {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.order-status-cancelled {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* ---------- Seller order cards ---------- */
+.seller-order-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.seller-order-card {
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.seller-order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.seller-order-header strong {
+  display: block;
+  color: var(--brown-900);
+}
+
+.seller-order-header small {
+  color: var(--text-muted);
+}
+
+.seller-order-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 20px;
+  padding: 14px 0;
+}
+
+.seller-order-items {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.seller-order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.seller-order-item span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.seller-order-item small {
+  display: block;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.order-thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.order-thumb.image-placeholder {
+  min-height: 48px;
+  font-size: 0.55rem;
+}
+
+.order-thumb.image-placeholder svg {
+  width: 16px;
+  height: 16px;
+}
+
+.seller-order-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.seller-order-delivery p {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0 0 4px;
+  font-size: 0.88rem;
+}
+
+.seller-order-delivery svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.seller-order-money {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  padding: 10px 12px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.seller-order-money div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.seller-order-money strong {
+  color: var(--terracotta-700);
+}
+
+.seller-order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Team: orders & earnings ---------- */
+.earnings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.earnings-card {
+  padding: 16px 18px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.earnings-card span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.earnings-card strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--brown-900);
+}
+
+.earnings-card.is-highlight {
+  background: var(--forest-50);
+  border-color: var(--forest-100);
+}
+
+.earnings-card.is-highlight strong {
+  color: var(--forest-700);
+}
+
+@media (max-width: 900px) {
+  .seller-order-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .seller-order-card {
+    padding: 14px;
+  }
+
+  .seller-order-actions .btn {
+    flex: 1;
+  }
+
+  .earnings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Team: latest order notifications ---------- */
+.team-notifications {
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.team-notifications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.team-notifications-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.team-notifications-empty {
+  margin: 0;
+  padding: 16px;
+  color: var(--text-muted);
+}
+
+.team-notification-list {
+  max-height: 320px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.team-notification {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.team-notification + .team-notification {
+  border-top: 1px solid var(--border);
+}
+
+.team-notification.is-unread {
+  background: var(--forest-50);
+  box-shadow: inset 4px 0 0 var(--terracotta-500);
+}
+
+/* ---------- Team: orders table ---------- */
+.admin-orders-table .admin-seller small {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.admin-order-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+}
+
+.admin-order-items li + li {
+  margin-top: 2px;
+}
+
+.admin-order-items strong {
+  color: var(--terracotta-700);
+}

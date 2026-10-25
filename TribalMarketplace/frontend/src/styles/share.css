@@ -1,0 +1,348 @@
+/* =====================================================================
+   share.css - the Share button and the "Share this product" pop-up
+   ===================================================================== */
+
+/* ---------- Share button ---------- */
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text-muted);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.share-button:hover {
+  color: var(--forest-700);
+  border-color: var(--forest-600);
+  background: var(--forest-50);
+}
+
+.share-button:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 2px;
+}
+
+/* Small round button on a product card, just under the heart */
+.share-button-card {
+  position: absolute;
+  top: 56px;
+  right: 10px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+}
+
+/* "Share" button next to "Like" on the product page */
+.share-button-details {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .share-button-card {
+    top: 46px;
+    right: 6px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .share-button-card svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ---------- Share pop-up ---------- */
+.share-dialog {
+  width: min(460px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0; /* the padding is on .share-dialog-inner, so a click on the dark area closes it */
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+  color: var(--text);
+  overflow-y: auto;
+}
+
+.share-dialog::backdrop {
+  background: rgba(31, 20, 12, 0.55);
+}
+
+.share-dialog-inner {
+  padding: 24px;
+}
+
+.share-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.share-dialog-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.share-dialog-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.share-dialog-close:hover {
+  background: var(--beige);
+  color: var(--text);
+}
+
+.share-dialog-close:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 2px;
+}
+
+/* Photo, name and price of the product being shared */
+.share-product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--cream);
+}
+
+.share-product-image {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--beige);
+}
+
+/* Smaller placeholder when the product has no photo */
+.share-product .image-placeholder {
+  font-size: 0.65rem;
+  gap: 2px;
+}
+
+.share-product .image-placeholder svg {
+  width: 20px;
+  height: 20px;
+}
+
+.share-product-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.share-product-price {
+  display: block;
+  margin-top: 2px;
+  color: var(--terracotta-600);
+  font-weight: 600;
+}
+
+.share-section-title {
+  display: block;
+  margin: 20px 0 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* The grid of apps: a coloured circle with the app name under it */
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 2px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.share-option:hover {
+  background: var(--cream);
+}
+
+.share-option:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 1px;
+}
+
+.share-option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--forest-700);
+  transition: transform var(--transition);
+}
+
+.share-option:hover .share-option-icon {
+  transform: scale(1.06);
+}
+
+.share-option-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Each app in its own well-known colour */
+.share-option-whatsapp .share-option-icon {
+  background: #25d366;
+}
+
+.share-option-gmail .share-option-icon {
+  background: #ea4335;
+}
+
+.share-option-email .share-option-icon {
+  background: var(--brown-500);
+}
+
+.share-option-sms .share-option-icon {
+  background: #2f7bd8;
+}
+
+.share-option-facebook .share-option-icon {
+  background: #1877f2;
+}
+
+.share-option-telegram .share-option-icon {
+  background: #229ed9;
+}
+
+.share-option-more .share-option-icon {
+  background: var(--beige);
+  color: var(--text);
+}
+
+/* Link box with the Copy button */
+.share-link-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+}
+
+.share-link-row:focus-within {
+  border-color: var(--forest-600);
+}
+
+.share-link-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.share-link-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  text-overflow: ellipsis;
+}
+
+.share-link-input:focus {
+  outline: none;
+}
+
+.share-copy-button {
+  flex-shrink: 0;
+  min-width: 92px;
+  border-radius: var(--radius-pill);
+}
+
+.share-copy-button.is-copied {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.share-notice {
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.share-notice:empty {
+  margin: 0;
+  min-height: 0;
+}
+
+@media (max-width: 380px) {
+  .share-dialog-inner {
+    padding: 18px;
+  }
+
+  .share-option-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-option:hover .share-option-icon {
+    transform: none;
+  }
+}

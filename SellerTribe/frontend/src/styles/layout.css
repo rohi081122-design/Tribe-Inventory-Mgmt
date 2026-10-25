@@ -1,0 +1,395 @@
+/* =====================================================================
+   layout.css - header, logo and footer of the seller website
+   ===================================================================== */
+
+.seller-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: var(--white);
+  background-color: var(--forest-800);
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 10px, transparent 10px 20px);
+  border-bottom: 3px solid var(--terracotta-600);
+  box-shadow: 0 2px 10px rgba(31, 20, 12, 0.12);
+}
+
+.seller-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  min-height: 68px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* ---------- Brand / logo ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--white);
+}
+
+.brand:hover {
+  color: var(--white);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-tagline {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  white-space: nowrap;
+}
+
+/* CSS-only logo: a patterned ring with a letter in the middle */
+.logo-mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--terracotta-500) 0 12.5%,
+    var(--ochre) 0 25%,
+    var(--terracotta-500) 0 37.5%,
+    var(--ochre) 0 50%,
+    var(--terracotta-500) 0 62.5%,
+    var(--ochre) 0 75%,
+    var(--terracotta-500) 0 87.5%,
+    var(--ochre) 0
+  );
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--forest-800);
+  border: 2px dashed rgba(246, 231, 197, 0.55);
+}
+
+.logo-mark-letter {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ochre-light);
+}
+
+/* ---------- Navigation ---------- */
+.seller-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.seller-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.seller-nav-link:hover,
+.seller-nav-link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+}
+
+.seller-nav-upload {
+  margin-left: 6px;
+}
+
+/* ---------- Notification bell ---------- */
+/* On wide screens the bell sits after the links (order: 2); the links take the free space before it */
+.seller-navbar-inner .seller-nav {
+  margin-left: auto;
+}
+
+.notification-bell {
+  position: relative;
+  order: 2;
+}
+
+.notification-button {
+  position: relative;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.notification-count {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--terracotta-500);
+  color: var(--white);
+  border: 2px solid var(--forest-800);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+.notification-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 200;
+  width: 380px;
+  max-width: calc(100vw - 24px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+
+.notification-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.notification-mark-read {
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: var(--terracotta-600);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.notification-empty {
+  margin: 0;
+  padding: 20px 16px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.notification-list {
+  max-height: min(420px, 60vh);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.notification-list li + li {
+  border-top: 1px solid var(--border);
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: var(--white);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background: var(--cream);
+}
+
+.notification-item.is-unread {
+  background: var(--forest-50);
+  box-shadow: inset 4px 0 0 var(--terracotta-500);
+}
+
+.notification-icon {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--forest-100);
+  color: var(--forest-700);
+}
+
+.notification-icon-order_cancelled {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.notification-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.notification-text strong {
+  color: var(--brown-900);
+  font-size: 0.88rem;
+}
+
+.notification-text small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.notification-footer {
+  display: block;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--terracotta-600);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.notification-footer:hover {
+  background: var(--cream);
+}
+
+/* ---------- Footer ---------- */
+.seller-footer {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: rgba(253, 248, 241, 0.8);
+  background: var(--brown-900);
+}
+
+.seller-footer .pattern-strip {
+  background-color: var(--brown-900);
+}
+
+.seller-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.seller-footer p {
+  margin: 0;
+}
+
+.seller-footer a {
+  color: var(--ochre-light);
+  text-decoration: underline;
+}
+
+.seller-footer-note {
+  color: rgba(253, 248, 241, 0.6);
+}
+
+/* ---------- Responsive ---------- */
+/* Phones: the links in an even grid, the Upload button full width below them */
+@media (max-width: 720px) {
+  .seller-nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 3;
+  }
+
+  /* The bell stays in the top row, next to the logo */
+  .notification-bell {
+    margin-left: auto;
+  }
+
+  .notification-button {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .notification-bell .notification-button svg {
+    display: block;
+  }
+
+  .seller-nav-link {
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Text only on phones, so the buttons always fit */
+  .seller-nav-link svg {
+    display: none;
+  }
+
+  /* Logged out there is only one link: let it use the whole row */
+  .seller-nav-link:only-child {
+    grid-column: 1 / -1;
+  }
+
+  .seller-nav-upload {
+    grid-column: 1 / -1;
+    margin-left: 0;
+  }
+}
+
+/* Small phones: two links per row */
+@media (max-width: 480px) {
+  .seller-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .seller-nav-link {
+    padding: 8px 4px;
+    font-size: 0.8rem;
+  }
+}

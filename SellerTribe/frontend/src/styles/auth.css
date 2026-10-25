@@ -1,0 +1,234 @@
+/* =====================================================================
+   auth.css - seller login / registration page
+   ===================================================================== */
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 56px;
+  background-color: var(--beige);
+  background-image: radial-gradient(rgba(138, 90, 55, 0.12) 1.5px, transparent 1.6px);
+  background-size: 20px 20px;
+}
+
+.auth-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  width: 100%;
+  max-width: 1040px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Left decorative panel */
+.auth-aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 36px;
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--forest-800);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.6px),
+    linear-gradient(160deg, var(--forest-700), var(--forest-900));
+  background-size: 20px 20px, 100% 100%;
+}
+
+/* Concentric rings in the corner, inspired by painted sun motifs */
+.auth-aside::before {
+  content: '';
+  position: absolute;
+  right: -90px;
+  bottom: -90px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, rgba(217, 164, 65, 0.3) 0 2px, transparent 3px 18px);
+}
+
+.auth-aside > * {
+  position: relative;
+}
+
+.auth-aside h1 {
+  color: var(--white);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.auth-steps {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.auth-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-steps strong {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--terracotta-700);
+  font-size: 0.9rem;
+}
+
+/* Right side with the forms */
+.auth-form-wrapper {
+  min-width: 0;
+  padding: 32px 40px 36px;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 4px;
+  background: var(--beige);
+  border-radius: var(--radius);
+}
+
+.auth-tab {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--brown-700);
+  font-weight: 600;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.auth-tab:hover {
+  color: var(--terracotta-700);
+}
+
+.auth-tab.is-active {
+  background: var(--white);
+  color: var(--terracotta-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-title {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.form-control-lg {
+  min-height: 54px;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.address-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.prototype-note,
+.privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.prototype-note svg,
+.privacy-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.prototype-note {
+  margin: 16px 0 0;
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.privacy-note {
+  margin: 0 0 18px;
+  background: var(--success-bg);
+  color: #1d5535;
+}
+
+/* Text-style button inside the error message ("Register now") */
+.link-button {
+  margin-left: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+  }
+
+  .auth-aside {
+    padding: 24px;
+  }
+
+  .auth-aside h1 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  .auth-steps {
+    display: none;
+  }
+
+  .auth-form-wrapper {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 16px 12px 36px;
+  }
+
+  .auth-form-wrapper {
+    padding: 20px 16px;
+  }
+
+  .auth-tab {
+    font-size: 0.85rem;
+  }
+
+  .auth-title {
+    font-size: 1.35rem;
+  }
+}

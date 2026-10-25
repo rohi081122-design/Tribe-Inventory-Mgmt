@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Browser tab icon: the same mark as the SellerTribe logo (patterned ring, green centre, letter S) -->
+  <circle cx="32" cy="32" r="32" fill="#d9a441"/>
+  <path fill="#c75f3c" d="M32 32 32 0A32 32 0 0 1 54.63 9.37ZM32 32 64 32A32 32 0 0 1 54.63 54.63ZM32 32 32 64A32 32 0 0 1 9.37 54.63ZM32 32 0 32A32 32 0 0 1 9.37 9.37Z"/>
+  <circle cx="32" cy="32" r="26" fill="#1f3d29"/>
+  <circle cx="32" cy="32" r="23.5" fill="none" stroke="#f6e7c5" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="4 3"/>
+  <path fill="none" stroke="#f6e7c5" stroke-width="6.5" stroke-linecap="round" d="M41 22.5C38.5 18.5 23.5 18 23.5 25.5S40.5 31 40.5 38.5 25.5 46.5 22.5 41.5"/>
+</svg>

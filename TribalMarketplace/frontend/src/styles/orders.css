@@ -1,0 +1,447 @@
+/* =====================================================================
+   orders.css - checkout, My Orders and order details
+   ===================================================================== */
+
+/* ---------- Checkout layout ---------- */
+.checkout-layout,
+.order-details-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+  align-items: start;
+}
+
+.order-details-main {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.checkout-panel,
+.checkout-summary {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 150px;
+  box-shadow: var(--shadow);
+}
+
+.checkout-panel h2,
+.checkout-summary h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.checkout-step-title {
+  margin-top: 12px;
+}
+
+.checkout-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+.form-group-wide {
+  grid-column: 1 / -1;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.payment-option.is-selected {
+  border-color: var(--forest-600);
+  background: var(--forest-50);
+}
+
+.payment-option input {
+  accent-color: var(--forest-700);
+}
+
+.payment-option span {
+  flex: 1;
+}
+
+.payment-option strong {
+  display: block;
+  color: var(--brown-900);
+}
+
+.payment-option small {
+  color: var(--text-muted);
+}
+
+.payment-option svg {
+  color: var(--forest-700);
+}
+
+/* ---------- Order summary ---------- */
+.summary-items {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-items li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.summary-items li > div {
+  min-width: 0;
+}
+
+.summary-items strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--brown-900);
+  overflow-wrap: anywhere;
+}
+
+.summary-items small {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.summary-items .summary-fee {
+  color: var(--terracotta-600);
+}
+
+.summary-thumb {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.summary-thumb.image-placeholder {
+  min-height: 56px;
+  font-size: 0.6rem;
+}
+
+.summary-thumb.image-placeholder svg {
+  width: 18px;
+  height: 18px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  color: var(--text-muted);
+}
+
+.summary-row small {
+  font-size: 0.75rem;
+}
+
+/* Small second line under a summary label, e.g. "≈ 162 km from the seller" */
+.summary-row .summary-row-sub {
+  display: block;
+  font-weight: 400;
+}
+
+/* Delivery charge row: highlighted when the address is outside the free delivery zone */
+.summary-row.summary-delivery {
+  color: var(--terracotta-700);
+  font-weight: 600;
+}
+
+.summary-deliveries {
+  margin: 0 0 4px;
+  padding: 0 0 0 12px;
+  list-style: none;
+  border-left: 2px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.summary-deliveries li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 0;
+}
+
+.summary-delivery-note {
+  margin: 2px 0 6px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.summary-total {
+  margin: 6px 0 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brown-900);
+}
+
+.summary-note {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.summary-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ---------- Order status pill ---------- */
+.order-status {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--beige);
+  color: var(--brown-700);
+}
+
+.order-status-placed {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.order-status-confirmed,
+.order-status-shipped {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.order-status-delivered {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.order-status-cancelled {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* ---------- My Orders list ---------- */
+.order-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.order-card {
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.order-card-header,
+.order-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.order-card-header strong {
+  display: block;
+  color: var(--brown-900);
+}
+
+.order-card-header small,
+.order-card-footer small {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.order-card-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.order-card-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.order-card-item span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.order-card-item small {
+  display: block;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.order-thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.order-thumb.image-placeholder {
+  min-height: 48px;
+  font-size: 0.55rem;
+}
+
+.order-thumb.image-placeholder svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- Order details ---------- */
+.order-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.order-steps li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  position: relative;
+}
+
+/* line between the steps */
+.order-steps li:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 50%;
+  width: 100%;
+  height: 3px;
+  background: var(--beige-dark);
+  z-index: 0;
+}
+
+.order-steps li.is-done:not(:first-child)::before {
+  background: var(--forest-600);
+}
+
+.order-step-dot {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--beige);
+  color: var(--brown-700);
+  font-weight: 700;
+}
+
+.order-steps li.is-done {
+  color: var(--forest-700);
+  font-weight: 600;
+}
+
+.order-steps li.is-done .order-step-dot {
+  background: var(--forest-600);
+  color: var(--white);
+}
+
+.order-cancelled-note {
+  margin: 0;
+  color: var(--error);
+  font-weight: 600;
+}
+
+.order-side-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-family: var(--font-body);
+  font-size: 1rem !important;
+}
+
+.order-address {
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+}
+
+.order-address strong {
+  display: block;
+  color: var(--brown-900);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .checkout-layout,
+  .order-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .checkout-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-panel,
+  .checkout-summary {
+    padding: 18px 16px;
+  }
+
+  .order-steps li {
+    font-size: 0.72rem;
+  }
+
+  .order-card-footer .btn {
+    width: 100%;
+  }
+}

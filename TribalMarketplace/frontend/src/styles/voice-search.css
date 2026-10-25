@@ -1,0 +1,212 @@
+/* =====================================================================
+   voice-search.css - the voice search pop-up (components/VoiceSearchDialog.jsx)
+   ===================================================================== */
+
+.voice-dialog {
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0; /* the padding is on .voice-dialog-inner, so a click on the dark area closes it */
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+  color: var(--text);
+  overflow-y: auto;
+}
+
+.voice-dialog::backdrop {
+  background: rgba(31, 20, 12, 0.6);
+}
+
+.voice-dialog-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 24px 28px;
+  text-align: center;
+}
+
+.voice-dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.voice-dialog-close:hover {
+  background: var(--beige);
+  color: var(--text);
+}
+
+.voice-dialog-close:focus-visible,
+.voice-mic:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 3px;
+}
+
+/* "Listening... speak now" */
+.voice-heading {
+  min-height: 1.6em;
+  margin: 0;
+  padding: 0 28px;
+  font-size: 1.3rem;
+}
+
+/* The words heard so far */
+.voice-text {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.voice-text.is-final {
+  color: var(--terracotta-600);
+}
+
+.voice-examples,
+.voice-tip,
+.voice-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.voice-hint {
+  max-width: 320px;
+}
+
+/* ---------- The big round mic ---------- */
+.voice-mic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--beige);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+/* Listening: red with rings moving outwards */
+.voice-mic-listening {
+  background: #d92d3a;
+  color: var(--white);
+  animation: voice-rings 1.4s ease-out infinite;
+}
+
+/* Starting: waiting for the microphone (and for the "Allow" click) */
+.voice-mic-starting {
+  background: var(--terracotta-100);
+  color: var(--terracotta-600);
+}
+
+/* Turning the voice into text, or about to search */
+.voice-mic-processing,
+.voice-mic-done {
+  background: var(--terracotta-600);
+  color: var(--white);
+  cursor: default;
+  animation: voice-breathe 1.2s ease-in-out infinite;
+}
+
+.voice-mic-error,
+.voice-mic-idle {
+  background: var(--beige);
+  color: var(--text-muted);
+}
+
+.voice-mic-error:hover,
+.voice-mic-idle:hover {
+  background: var(--beige-dark);
+  color: var(--text);
+}
+
+.voice-mic:disabled {
+  opacity: 1; /* keep the colours; it is only "not clickable" */
+}
+
+@keyframes voice-rings {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(217, 45, 58, 0.35),
+      0 0 0 0 rgba(217, 45, 58, 0.2);
+  }
+  100% {
+    box-shadow:
+      0 0 0 18px rgba(217, 45, 58, 0),
+      0 0 0 36px rgba(217, 45, 58, 0);
+  }
+}
+
+@keyframes voice-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-mic-listening,
+  .voice-mic-processing,
+  .voice-mic-done {
+    animation: none;
+  }
+}
+
+/* ---------- Error box ---------- */
+.voice-error {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--error-bg);
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.voice-error p {
+  margin: 0;
+}
+
+.voice-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+@media (max-width: 380px) {
+  .voice-dialog-inner {
+    padding: 36px 16px 22px;
+  }
+
+  .voice-mic {
+    width: 80px;
+    height: 80px;
+  }
+}
