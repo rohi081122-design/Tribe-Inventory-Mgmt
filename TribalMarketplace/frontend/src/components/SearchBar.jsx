@@ -16,7 +16,7 @@ import { MicIcon, SearchIcon } from './Icons.jsx';
 import useSearchSuggestions, { cleanSearchText } from '../hooks/useSearchSuggestions.js';
 import { isVoiceSearchSupported } from '../hooks/useVoiceSearch.js';
 
-function SearchBar({ size = 'normal', placeholder = 'Search for dokra art, bamboo baskets, jewellery...' }) {
+function SearchBar({ size = 'normal', placeholder = 'Search...' }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
