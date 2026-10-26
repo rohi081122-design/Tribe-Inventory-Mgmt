@@ -57,7 +57,7 @@ const slides = [
     eyebrow: 'For artisans and sellers',
     title: 'Support Local Tribal Sellers',
     description: 'Help local artisans showcase their products to customers online.',
-    imageUrl: '/images/banners/sellers.jpg', // artisan making lac bangles at a tribal crafts fair
+    imageUrl: '/images/banners/artisan.jpg', // artisan making lac bangles at a tribal crafts fair
     imagePosition: 'center 35%',
     credit: {
       text: 'Photo: Goutam1962, CC BY-SA 4.0',
@@ -72,7 +72,7 @@ const slides = [
     eyebrow: 'From forests and villages',
     title: 'Explore Natural and Eco-Friendly Products',
     description: 'Discover lac work, sal leaf plates, jute and natural fibre goods made by hand.',
-    imageUrl: '/images/banners/artisan.jpg', // Hundru Falls, Ranchi
+    imageUrl: '/images/banners/d.jpg', // Hundru Falls, Ranchi
     imagePosition: 'center 55%',
     credit: {
       text: 'Photo: Kingshuk Mondal, CC BY 4.0',
