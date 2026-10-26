@@ -3,10 +3,10 @@
 
 const siteConfig = {
   name: 'SellerTribe',
-  tagline: 'Seller Hub · Tribal Marketplace',
+  tagline: 'Seller Hub · TriVira',
 
   // Address of the buyer marketplace (set VITE_MARKETPLACE_URL in frontend/.env)
-  marketplaceUrl: (import.meta.env.VITE_MARKETPLACE_URL).replace(/\/$/, ''),
+  marketplaceUrl: (import.meta.env.VITE_MARKETPLACE_URL || 'http://localhost:5173').replace(/\/$/, ''),
 };
 
 export default siteConfig;
