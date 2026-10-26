@@ -2,7 +2,7 @@
 // Basic website settings that you can change without touching the components.
 
 const siteConfig = {
-  name: 'Tribal Marketplace',
+  name: 'TriVira',
   tagline: 'Handmade in Jharkhand',
 
   // Website logo. Leave empty to use the built-in CSS logo.
