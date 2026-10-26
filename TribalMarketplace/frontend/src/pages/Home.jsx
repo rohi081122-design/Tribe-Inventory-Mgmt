@@ -77,7 +77,7 @@ function Home() {
               <h2 id="home-search-title">What are you looking for today?</h2>
               <p>Search handmade crafts, jewellery, bamboo and eco-friendly products from tribal sellers.</p>
             </div>
-            <SearchBar size="large" />
+            {/* <SearchBar size="large" /> */}
             <div className="quick-searches">
               <span>Popular searches:</span>
               {QUICK_SEARCHES.map((term) => (
