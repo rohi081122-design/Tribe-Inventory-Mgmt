@@ -78,7 +78,7 @@ function Home() {
               <p>Search handmade crafts, jewellery, bamboo and eco-friendly products from tribal sellers.</p>
             </div>
 
-            <SearchBar size="normal" />
+            <SearchBar size="large" />
             
             <div className="quick-searches">
               <span>Popular searches:</span>

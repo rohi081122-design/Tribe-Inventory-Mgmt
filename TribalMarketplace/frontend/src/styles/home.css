@@ -403,6 +403,7 @@
     height: 50px;
     padding: 0 16px;
     font-size: 0.95rem;
+    width: inherit;
   }
 
   .search-bar-large button {
