@@ -2,7 +2,7 @@
 // Basic settings for the seller website.
 
 const siteConfig = {
-  name: 'SellerTribe',
+  name: 'Seller TriVira',
   tagline: 'Seller Hub · TriVira',
 
   // Address of the buyer marketplace (set VITE_MARKETPLACE_URL in frontend/.env)
