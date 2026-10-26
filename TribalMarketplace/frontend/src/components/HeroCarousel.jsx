@@ -14,7 +14,7 @@ import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from './Icons.
 import { isUsableImageUrl } from '../utils/images.js';
 import '../styles/hero-carousel.css';
 
-const AUTO_PLAY_DELAY_MS = 5000;
+const AUTO_PLAY_DELAY_MS = 3000;
 const SWIPE_DISTANCE_PX = 50;
 
 function userPrefersReducedMotion() {
