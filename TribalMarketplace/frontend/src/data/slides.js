@@ -72,7 +72,7 @@ const slides = [
     eyebrow: 'From forests and villages',
     title: 'Explore Natural and Eco-Friendly Products',
     description: 'Discover lac work, sal leaf plates, jute and natural fibre goods made by hand.',
-    imageUrl: '/images/banners/d.jpg', // Hundru Falls, Ranchi
+    imageUrl: '/images/banners/d.jpeg', // Hundru Falls, Ranchi
     imagePosition: 'center 55%',
     credit: {
       text: 'Photo: Kingshuk Mondal, CC BY 4.0',
