@@ -42,7 +42,7 @@ const slides = [
     eyebrow: 'Crafted by hand',
     title: 'Handmade with Tradition',
     description: 'Discover unique bamboo crafts, tribal jewellery, and traditional art.',
-    imageUrl: '/images/banners/handmade.jpg', // Dokra metal craft
+    imageUrl: '/images/banners/da.jpeg', // Dokra metal craft
     imagePosition: 'center 45%',
     credit: {
       text: 'Photo: Susannaanas, CC BY-SA 4.0',
