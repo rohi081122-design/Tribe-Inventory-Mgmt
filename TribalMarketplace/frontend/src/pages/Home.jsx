@@ -90,7 +90,7 @@ function Home() {
             </div>
           </div>
 
-          <ul className="home-highlights">
+          {/* <ul className="home-highlights">
             {HIGHLIGHTS.map((item) => (
               <li key={item.title} className="home-highlight">
                 <span className="home-highlight-icon" aria-hidden="true">
@@ -102,11 +102,24 @@ function Home() {
                 </span>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </section>
 
-      {/* 3. Featured categories */}
+      {/* 4. Popular products */}
+      <section className="page-section page-section-alt" aria-labelledby="popular-products">
+        <div className="container">
+          <SectionHeader
+            id="popular-products"
+            title="Popular Products"
+            subtitle="Products that shoppers are viewing the most."
+            linkTo="/products?sort=popular"
+          />
+          <ProductGrid {...popular} skeletonCount={4} />
+        </div>
+      </section>
+
+       {/* 3. Featured categories */}
       <section className="page-section" aria-labelledby="featured-categories">
         <div className="container">
           <SectionHeader
@@ -159,19 +172,6 @@ function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 4. Popular products */}
-      <section className="page-section page-section-alt" aria-labelledby="popular-products">
-        <div className="container">
-          <SectionHeader
-            id="popular-products"
-            title="Popular Products"
-            subtitle="Products that shoppers are viewing the most."
-            linkTo="/products?sort=popular"
-          />
-          <ProductGrid {...popular} skeletonCount={4} />
         </div>
       </section>
 
