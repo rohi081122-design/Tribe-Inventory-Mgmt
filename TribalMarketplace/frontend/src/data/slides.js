@@ -27,11 +27,11 @@ const slides = [
     eyebrow: 'Handmade in Jharkhand',
     title: 'Discover the Heritage of Jharkhand',
     description: 'Explore traditional handicrafts and handmade products from local tribal artisans.',
-    imageUrl: '/images/banners/heritage.jpg', // Sohrai wall painting, Isko village, Hazaribagh
+    imageUrl: '/images/banners/cart.jpg', // Sohrai wall painting, Isko village, Hazaribagh
     imagePosition: 'center 40%',
     credit: {
       text: 'Photo: Kingshuk Mondal, CC BY 4.0',
-      url: 'https://commons.wikimedia.org/w/index.php?curid=177684580',
+      url: '#',
     },
     buttonText: 'Explore Products',
     buttonLink: '/products',
@@ -46,7 +46,7 @@ const slides = [
     imagePosition: 'center 45%',
     credit: {
       text: 'Photo: Susannaanas, CC BY-SA 4.0',
-      url: 'https://commons.wikimedia.org/w/index.php?curid=144448426',
+      url: '#',
     },
     buttonText: 'Shop Handicrafts',
     buttonLink: '/categories/handicrafts-tribal-art',
@@ -61,7 +61,7 @@ const slides = [
     imagePosition: 'center 35%',
     credit: {
       text: 'Photo: Goutam1962, CC BY-SA 4.0',
-      url: 'https://commons.wikimedia.org/w/index.php?curid=130242031',
+      url: '#',
     },
     buttonText: 'Become a Seller',
     buttonLink: `${siteConfig.sellerSiteUrl}/login?mode=register`, // opens the SellerTribe website
@@ -72,11 +72,11 @@ const slides = [
     eyebrow: 'From forests and villages',
     title: 'Explore Natural and Eco-Friendly Products',
     description: 'Discover lac work, sal leaf plates, jute and natural fibre goods made by hand.',
-    imageUrl: '/images/banners/natural.jpg', // Hundru Falls, Ranchi
+    imageUrl: '/images/banners/artisan.jpg', // Hundru Falls, Ranchi
     imagePosition: 'center 55%',
     credit: {
       text: 'Photo: Kingshuk Mondal, CC BY 4.0',
-      url: 'https://commons.wikimedia.org/w/index.php?curid=153645090',
+      url: '#',
     },
     buttonText: 'Explore Categories',
     buttonLink: '/categories',
